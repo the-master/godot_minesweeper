@@ -2,18 +2,17 @@ extends Node2D
 
 var size 
 var bombs
-var flags
 var field
 var first_click
+
 func _ready():
 	size = Globals.board_size()
 	bombs= Globals.bomb_count()
-	flags=0
-	field=Util.arr(size[0])
+	field=Util.arr(int(size.x))
 	first_click = true
-	for i in size[0]:
-		field[i]=Util.arr(size[1])
-		for j in size[1]:
+	for i in int(size.x):
+		field[i]=Util.arr(int(size.y))
+		for j in int(size.y):
 			var newSquare = $SquarePrototype.duplicate()
 			newSquare.set_position(Vector2(100+i*$SquarePrototype.width(),100+j*$SquarePrototype.height()))
 			newSquare.visible = true
@@ -21,18 +20,42 @@ func _ready():
 			add_child(newSquare)
 			field[i][j]=newSquare
 			newSquare.connect("gui_input",newSquare,"inp")
-#	put_mines()
+
+func left_click(square,e):
+	place_mines_on_first_click(square.position)
+#
+	square.right_clickable=false
+	square.left_clickable=false
+	if square.mine:
+		print("you lose")
+		back()
+	else:
+		square.icon = null
+		var count = count_adjacent_mines(square.position)
+		if count == 0 :
+			square.text = " "
+			click_neighbours(square.position,e)
+		else:
+			square.text = str(count)
+
+func place_mines_on_first_click(position):
+	if first_click:
+		first_click = false
+		put_mines(position)
+		
 func put_mines(exclude):
-	
 	var coords=[]
-	for i in size[0]:
-		for j in size[1]:
+	for i in int(size.x):
+		for j in int(size.y):
 			coords.append([i,j])
+			
 	coords.erase(exclude)
+	
 	var temp = null 
 	for coord in neigbours(exclude):
 		coords.erase(coord)
 		temp=coord
+	
 	for coord in neigbours(temp):
 		coords.erase(coord)
 		
@@ -41,21 +64,17 @@ func put_mines(exclude):
 	for point in coords:
 		field[point[0]][point[1]].mine=true
 		
-		
 func neigbours(pos):
-#	print(pos)
-	var x = pos[0]
-	var y = pos[1]
-	
-	var all_neigbours = [[x-1,y-1],[x-1,y],[x-1,y+1],[x,y+1],[x+1,y+1],[x+1,y],[x+1,y-1],[x,y-1]]
-
 	var rv = []
-	for point in all_neigbours:
-		if(point[0]>=0 and point[0] < size[0] and point[1]>=0 and point[1]<size[1]):
+	for point in Util.around(pos):
+		if(on_board(point)):
 			rv.append(point)
-#	print(rv)
 	return rv
-func adjacent_mines(pos):
+	
+func on_board(point):
+	return point[0]>=0 and point[0] < size.x and point[1]>=0 and point[1]<size.y
+
+func count_adjacent_mines(pos):
 	var count = 0
 	for point in neigbours(pos):
 		if field[point[0]][point[1]].mine:

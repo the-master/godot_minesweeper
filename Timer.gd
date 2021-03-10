@@ -17,6 +17,6 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	$RichTextLabel.text = str(float($RichTextLabel.text) - 1)
+	$RichTextLabel.text = str(float($RichTextLabel.text) + 1)
 	if $RichTextLabel.text == "0":
 		get_parent().back()

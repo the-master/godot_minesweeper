@@ -51,7 +51,7 @@ margin_left = 631.379
 margin_top = 6.67419
 margin_right = 671.379
 margin_bottom = 46.6742
-text = "9999"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,7 +71,7 @@ margin_left = 506.0
 margin_top = 11.0
 margin_right = 618.0
 margin_bottom = 42.0
-text = "time left"
+text = "time spent"
 __meta__ = {
 "_edit_use_anchors_": false
 }
