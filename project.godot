@@ -17,12 +17,11 @@ _global_script_class_icons={
 
 config/name="minesweeper"
 run/main_scene="res://MineSweeperMenu.tscn"
-config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://globals.gd"
 Util="*res://util.gd"
+GameState="*res://gamestate.gd"
 
 [rendering]
 
