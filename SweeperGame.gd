@@ -37,6 +37,7 @@ func left_click(square,e):
 			click_neighbours(square.position,e)
 		else:
 			square.text = str(count_adjacent_mines(square.position))
+	check_for_victory()
 
 func place_mines_on_first_click(position):
 	if first_click:
@@ -94,8 +95,11 @@ func back():
 func reduce_mine_count():
 	bombs = bombs - 1
 	$count.text = str(bombs)
+	check_for_victory()
+
+func check_for_victory():
 	if bombs == 0 and is_victorious():
-		GameState.victory = true
+		GameState.register_score($Timer/RichTextLabel.text)
 		Util.goto_scene("Control.tscn")
 
 func increase_mine_count():
@@ -111,3 +115,5 @@ func is_victorious():
 			if field[i][j].left_clickable:
 				return false
 	return true
+
+

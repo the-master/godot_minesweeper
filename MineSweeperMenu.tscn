@@ -27,9 +27,9 @@ __meta__ = {
 }
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 126.0
+margin_top = 104.0
 margin_right = 1024.0
-margin_bottom = 274.0
+margin_bottom = 252.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,9 +47,9 @@ text = "Sweeper !
 fit_content_height = true
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 374.0
+margin_top = 352.0
 margin_right = 1024.0
-margin_bottom = 474.0
+margin_bottom = 556.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,37 +57,67 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
 margin_left = 201.0
 margin_right = 822.0
-margin_bottom = 100.0
+margin_bottom = 204.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 204.0
+
+[node name="Beginner" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 text = "Beginner (8x8)"
 icon = ExtResource( 2 )
 
-[node name="Button2" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Beginner_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 200.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 204.0
 margin_right = 417.0
+margin_bottom = 204.0
+
+[node name="Intermediate" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 213.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 text = "Intermediate (16x16)"
 icon = ExtResource( 2 )
 
-[node name="Button3" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Intermediate_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 104.0
+margin_right = 213.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 421.0
 margin_right = 621.0
+margin_bottom = 204.0
+
+[node name="Expert" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 200.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 text = "Expert (16x30)"
 icon = ExtResource( 2 )
 
+[node name="Expert_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 104.0
+margin_right = 200.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
 [node name="score" type="RichTextLabel" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/Button" to="." method="start_easy_game"]
-[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/Button2" to="." method="start_medium_game"]
-[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/Button3" to="." method="start_expert_game"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/Beginner" to="." method="start_easy_game"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2/Intermediate" to="." method="start_medium_game"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3/Expert" to="." method="start_expert_game"]

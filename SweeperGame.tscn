@@ -20,15 +20,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 1.33484
-margin_right = 134.335
-margin_bottom = 72.0
-text = "back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="count" type="RichTextLabel" parent="."]
 margin_left = 312.0
 margin_top = 11.0
@@ -73,5 +64,4 @@ text = "time spent"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="back"]
 [connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
