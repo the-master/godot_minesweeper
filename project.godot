@@ -16,13 +16,9 @@ _global_script_class_icons={
 [application]
 
 config/name="minesweeper"
-run/main_scene="res://MineSweeperMenu.tscn"
+run/main_scene="res://main_menu.tscn"
 
 [autoload]
 
-Util="*res://util.gd"
-GameState="*res://gamestate.gd"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
+Util="*res://util/util.gd"
+GameState="*res://util/game_state.gd"

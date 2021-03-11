@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main_menu.gd" type="Script" id=1]
+[ext_resource path="res://RocknRollOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/favicon.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="MineSweeperMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 98.0
+margin_right = 1024.0
+margin_bottom = 198.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer2"]
+margin_left = 362.0
+margin_right = 662.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 300, 100 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_text = "Sweeper !
+"
+text = "Sweeper !
+"
+fit_content_height = true
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 298.0
+margin_right = 1024.0
+margin_bottom = 502.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+margin_left = 201.0
+margin_right = 822.0
+margin_bottom = 204.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 204.0
+
+[node name="Beginner" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+text = "Beginner (8x8)"
+icon = ExtResource( 3 )
+
+[node name="Beginner_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 200.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 204.0
+margin_right = 417.0
+margin_bottom = 204.0
+
+[node name="Intermediate" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 213.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+text = "Intermediate (16x16)"
+icon = ExtResource( 3 )
+
+[node name="Intermediate_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 104.0
+margin_right = 213.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 421.0
+margin_right = 621.0
+margin_bottom = 204.0
+
+[node name="Expert" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+text = "Expert (16x30)"
+icon = ExtResource( 3 )
+
+[node name="Expert_Score" type="RichTextLabel" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 104.0
+margin_right = 200.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="score" type="RichTextLabel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/Beginner" to="." method="start_easy_game"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2/Intermediate" to="." method="start_medium_game"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer3/Expert" to="." method="start_expert_game"]
